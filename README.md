@@ -9,13 +9,21 @@
 4. Formatted Filesystem (XFS/ext4) & Mounted Directory
 
 #### 1. Initialize the Physical Volume (PV)
-
 Select the raw disk or partition you want to use (for example, /dev/nvme1n1 or /dev/sdb) and convert it into an LVM Physical Volume:
-
 ```
 # Create the Physical Volume
 sudo pvcreate /dev/nvme1n1
 
 # Verify creation
 sudo pvs
+```
+
+#### 2. Create the Volume Group (VG)
+Group one or more Physical Volumes together into a single storage pool called a Volume Group (e.g., naming it DataVG):
+```
+# Syntax: vgcreate
+sudo vgcreate DataVG /dev/nvme1n1
+
+# Verify creation (shows free space in the pool)
+sudo vgs
 ```
