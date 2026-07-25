@@ -12,10 +12,10 @@
 
 Select the raw disk or partition you want to use (for example, /dev/nvme1n1 or /dev/sdb) and convert it into an LVM Physical Volume:
 
-'''
+```
 # Create the Physical Volume
 sudo pvcreate /dev/nvme1n1
 
 # Verify creation
 sudo pvs
-'''
+```
