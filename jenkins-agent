@@ -71,3 +71,22 @@ finally mount the volume with this command at the end
 ```
 sudo mount -a
 ```
+
+To extend the volume using lvm
+```
+sudo lvextend -L +10G /dev/jenkins_vg/jenkins_lv
+
+sudo lvextend -L 30G /dev/jenkins_vg/jenkins_lv
+
+with full space of the disk
+sudo lvextend -l +100%FREE /dev/jenkins_vg/jenkins_lv
+
+*** Extending the container (LV) isn't enough; you must tell the file system to expand into the new space.
+for ext4 filesystem
+sudo resize2fs /dev/jenkins_vg/jenkins_lv
+
+for xfs filesystem
+sudo xfs_growfs /home/ec2-user/jenkins
+```
+
+this is how we make the volume and attach them as required using lvm utility.
