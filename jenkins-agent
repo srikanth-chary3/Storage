@@ -42,3 +42,12 @@ mkfs.ext4 <location to the logical volume>
 ```
 here our location ot the logical volume is "/dev/jenkins_vg/jenkins_lv"
 
+then mount the volume to a desired directory or folder
+```
+mount <location of the logical volume> <location of the desired directory or folder>
+```
+here our logical vol location is "/dev/jenkins_vg/jenkins_lv" and being mounted to "/home/ec2-user/jenkins"
+```
+mount /dev/jenkins_vg/jenkins_lv /home/ec2-user/jenkins
+```
+
