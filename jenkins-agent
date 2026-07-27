@@ -7,3 +7,35 @@ lvextend -l +100%FREE /dev/mapper/RootVG-homeVol
 xfs_growfs /
 xfs_growfs /var
 xfs_growfs /home
+
+if jenkins agent with amazon or any other linux flavours
+create a disk
+attach the disk to the instance
+install lvm2
+
+create a pv (persistant voolume)
+```
+pvcreate /dev/<name of the disk>
+```
+here our disk name is pvcreate /dev/nvme1n1p1
+
+create a vg (volume group)
+```
+vgcreate <name of the volume group> <name of the persistant volume>
+```
+here our vg name is -> "jenkins_vg" and pv is -> "/dev/nvme1n1p1"
+
+create a logical volume from that volume group with full space like 100% free disk of size full or any size like 2G or 10G etc
+```
+lvcreate -l 100%FREE -n <name of logical volume> <name of volume group>
+```
+here our logical volume gets created from this lvcreate -l 100%FREE -n jenkins_lv jenkins_vg (with full disk space)
+
+we can also create a specific size of logical volume by mentioning the size while creatig the volume.
+
+make filesystem for that logical volume
+```
+mkfs.xfs <location to the logical volume>
+```
+here our location ot the logical volume is "/dev/jenkins_vg/jenkins_lv"
+
