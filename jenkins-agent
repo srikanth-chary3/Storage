@@ -1,3 +1,6 @@
+If we use any other instances other than amazon or ubuntu
+Here we are using devops practice machine, so running these commands to grow the disk size.
+```
 growpart /dev/nvme0n1 4
 
 lvextend -L +10G /dev/mapper/RootVG-varVol
@@ -12,6 +15,7 @@ if jenkins agent with amazon or any other linux flavours
 create a disk
 attach the disk to the instance
 install lvm2
+```
 
 create a pv (persistant voolume)
 ```
