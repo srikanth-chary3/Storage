@@ -33,9 +33,12 @@ here our logical volume gets created from this lvcreate -l 100%FREE -n jenkins_l
 
 we can also create a specific size of logical volume by mentioning the size while creatig the volume.
 
-make filesystem for that logical volume
+make filesystem for that logical volume based on the filesystem type ex: xfs or ext4
+for newer versions of linux this will be "ext4"
 ```
 mkfs.xfs <location to the logical volume>
+or
+mkfs.ext4 <location to the logical volume>
 ```
 here our location ot the logical volume is "/dev/jenkins_vg/jenkins_lv"
 
